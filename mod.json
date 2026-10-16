@@ -5,9 +5,9 @@
   },
   "id": "pumpkinman.fps-optimizer-pro",
   "name": "FPS Optimizer Pro",
-  "version": "v1.0.0",
+  "version": "v2.0.0",
   "developer": "Pumpkinman",
-  "description": "Live FPS counter and lightweight particle rendering mode.",
+  "description": "FPS Optimizer Pro 2.0: live FPS/frame-time overlay, low-graphics preset, and configurable visual reduction tools.",
   "tags": [
     "performance",
     "utility",
@@ -36,6 +36,93 @@
       "control": {
         "slider": true,
         "slider-step": 0.05,
+        "input": true
+      }
+    },
+    "low-graphics-mode": {
+      "name": "LOW GRAPHICS PRESET",
+      "description": "Hides background, ground layers and particle effects while playing. Overrides individual visibility toggles.",
+      "type": "bool",
+      "default": false
+    },
+    "hide-background": {
+      "name": "Hide Background",
+      "description": "Hides the level background during gameplay.",
+      "type": "bool",
+      "default": false
+    },
+    "hide-ground": {
+      "name": "Hide Ground",
+      "description": "Hides the main ground layer during gameplay.",
+      "type": "bool",
+      "default": false
+    },
+    "hide-ground-2": {
+      "name": "Hide Second Ground Layer",
+      "description": "Hides the secondary ground layer during gameplay.",
+      "type": "bool",
+      "default": false
+    },
+    "show-frame-time": {
+      "name": "Show Frame Time (ms)",
+      "description": "Displays estimated milliseconds per frame beside FPS.",
+      "type": "bool",
+      "default": true
+    },
+    "fps-counter-scale": {
+      "name": "FPS Counter Size",
+      "description": "Changes the on-screen FPS counter size.",
+      "type": "float",
+      "default": 0.45,
+      "min": 0.25,
+      "max": 0.8,
+      "control": {
+        "slider": true,
+        "slider-step": 0.05,
+        "input": true
+      }
+    },
+    "adaptive-fps-colors": {
+      "name": "Adaptive FPS Colors",
+      "description": "Green for high FPS, yellow for medium FPS, red for low FPS.",
+      "type": "bool",
+      "default": true
+    },
+    "show-performance-status": {
+      "name": "Show Performance Status",
+      "description": "Adds a simple GOOD / FAIR / LOW status label to the counter.",
+      "type": "bool",
+      "default": false
+    },
+    "hide-particles-in-practice": {
+      "name": "Reduce Particles in Practice Mode",
+      "description": "Allows particle reduction to be used while playing practice mode too.",
+      "type": "bool",
+      "default": true
+    },
+    "fps-green-threshold": {
+      "name": "Green FPS Threshold",
+      "description": "FPS values at or above this number are shown as green.",
+      "type": "int",
+      "default": 50,
+      "min": 30,
+      "max": 240,
+      "control": {
+        "slider": true,
+        "slider-step": 5,
+        "input": true
+      }
+    },
+    "fps-yellow-threshold": {
+      "name": "Yellow FPS Threshold",
+      "description": "FPS values at or above this number are shown as yellow, unless they meet the green threshold.",
+      "type": "int",
+      "default": 30,
+      "min": 10,
+      "max": 120,
+      "control": {
+        "slider": true,
+        "slider-step": 5,
         "input": true
       }
     }
