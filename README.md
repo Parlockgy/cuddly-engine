@@ -1,14 +1,15 @@
-# LevelTune Importer — Geode Android starter
+# Creator Toolkit (Geode / Android64)
 
-This is an editor-button prototype, not a finished downloader.
+Editor-side prototype for a level-creator toolbox.
+
+## Included in this starter build
+- An entry button is injected into `EditorUI` when the `editor-buttons-menu` node exists.
+- The popup describes the planned Object Optimizer, Palette Sync, and 50+ palette preset pages.
+- Settings allow disabling the editor button and indicate preview/confirmation preferences.
+- The code explicitly reports that no level data is modified by this prototype.
+
+## Important status note
+This is **not yet a fully functional optimizer**. It does not merge objects, rewrite trigger chains, alter color channels, or create more native Geometry Dash color channels. A safe implementation must inspect the actual selected-object data, preserve object properties and group/channel references, and be tested on copied levels before changing saved data. The 50+ slots are intended as mod-managed palette presets, not a claim that Geometry Dash's native channel limit has been expanded.
 
 ## Build
-Upload the folder contents to GitHub and run Actions -> Build LevelTune Importer. Download the Android64 artifact.
-
-## Current status
-- Adds a LevelTune button to the editor if the expected editor menu ID exists.
-- Shows an information popup.
-- Does not yet download/import music.
-- Does not extract audio from YouTube watch URLs.
-
-Next implementation work: robust editor-button placement, URL input UI, direct audio downloads with Android-safe networking, format/size validation, and registering/placing the downloaded song using supported Geometry Dash/Geode APIs. Test against the exact Geode SDK and GD version.
+Push the project to GitHub and run **Actions → Build Creator Toolkit**. The workflow targets Android64. Build output has not been compiled or tested in-game in this environment.

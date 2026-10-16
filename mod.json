@@ -1,22 +1,28 @@
 {
   "geode": "5.11.2",
-  "gd": {
-    "android": "2.2081"
-  },
-  "id": "pumpkinman.leveltune-importer",
-  "name": "LevelTune Importer",
+  "gd": { "android": "2.2081" },
+  "id": "pumpkinman.creator-toolkit",
+  "name": "Creator Toolkit",
   "version": "v1.0.0",
   "developer": "Pumpkinman",
-  "description": "Editor-side custom music helper for importing audio files from direct, authorized audio URLs.",
-  "tags": [
-    "editor",
-    "utility",
-    "music"
-  ],
+  "description": "An editor toolbox prototype for level creators: object optimization, palette sync, and expanded color-slot workflow.",
+  "tags": ["editor", "utility", "performance", "enhancement", "customization"],
   "settings": {
-    "keep-imported-audio": {
-      "name": "Keep Imported Audio",
-      "description": "Keep downloaded audio files in the mod's own storage folder.",
+    "show-editor-button": {
+      "name": "Show editor toolbox button",
+      "description": "Adds the Creator Toolkit button to the level editor when the target menu is available.",
+      "type": "bool",
+      "default": true
+    },
+    "confirm-optimization": {
+      "name": "Confirm optimization actions",
+      "description": "Keep enabled while object-merging functionality is being developed and tested.",
+      "type": "bool",
+      "default": true
+    },
+    "palette-sync-preview": {
+      "name": "Palette Sync preview mode",
+      "description": "Preview-only mode; does not rewrite level color channels in this prototype.",
       "type": "bool",
       "default": true
     }
