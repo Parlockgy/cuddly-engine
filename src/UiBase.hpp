@@ -1,7 +1,6 @@
+
 #pragma once
-// Minimal popup base built directly on FLAlertLayer (independent of geode::Popup's
-// template/signature changes between SDK majors). UNVERIFIED against SDK 5.x headers:
-// FLAlertLayer::init(int), m_mainLayer, m_noElasticity, keyBackClicked.
+
 #include <Geode/Geode.hpp>
 #include <string>
 #include <vector>
@@ -14,85 +13,209 @@ class CTPopup : public FLAlertLayer {
 protected:
     CCMenu* m_menu = nullptr;
     CCNode* m_body = nullptr;
-    CCSize m_size{0, 0};
-    CCPoint m_center{0, 0};
+    CCSize m_size{0.f, 0.f};
+    CCPoint m_center{0.f, 0.f};
 
     bool initBase(float w, float h, char const* title) {
-        if (!FLAlertLayer::init(110)) return false;
-        m_noElasticity = true;
-        m_size = {w, h};
-        auto win = CCDirector::sharedDirector()->getWinSize();
-        m_center = {win.width / 2, win.height / 2};
-        if (!m_mainLayer) { m_mainLayer = CCLayer::create(); this->addChild(m_mainLayer); }
+        if (!FLAlertLayer::init(110)) {
+            return false;
+        }
 
-        auto bg = extension::CCScale9Sprite::create("GJ_square01.png", {0, 0, 80, 80});
+        m_noElasticity = true;
+        m_size = CCSize{w, h};
+
+        auto win = CCDirector::sharedDirector()->getWinSize();
+
+        // Explicit CCPoint avoids ambiguous CCPoint/CCSize assignment.
+        m_center = CCPoint{
+            win.width / 2.f,
+            win.height / 2.f
+        };
+
+        if (!m_mainLayer) {
+            m_mainLayer = CCLayer::create();
+            if (!m_mainLayer) {
+                return false;
+            }
+            this->addChild(m_mainLayer);
+        }
+
+        auto bg = extension::CCScale9Sprite::create(
+            "GJ_square01.png",
+            CCRect{0.f, 0.f, 80.f, 80.f}
+        );
+
+        if (!bg) {
+            return false;
+        }
+
         bg->setContentSize(m_size);
         bg->setPosition(m_center);
         m_mainLayer->addChild(bg, -1);
 
         m_body = CCNode::create();
+        if (!m_body) {
+            return false;
+        }
+
+        m_body->setPosition(m_center);
         m_mainLayer->addChild(m_body, 5);
 
         m_menu = CCMenu::create();
+        if (!m_menu) {
+            return false;
+        }
+
         m_menu->setPosition(m_center);
         m_menu->setTouchPriority(-504);
         m_mainLayer->addChild(m_menu, 10);
 
-        auto t = CCLabelBMFont::create(title, "goldFont.fnt");
-        t->setScale(.7f);
-        t->setPosition(m_center + CCPoint{0, h / 2 - 18});
-        m_mainLayer->addChild(t, 6);
+        auto label = CCLabelBMFont::create(
+            title ? title : "Creator Toolkit",
+            "goldFont.fnt"
+        );
 
-        auto closeSpr = CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
-        auto close = CCMenuItemSpriteExtra::create(closeSpr, this, menu_selector(CTPopup::onClose));
-        close->setPosition({-w / 2 + 4, h / 2 - 4});
-        m_menu->addChild(close);
+        if (label) {
+            label->setScale(0.7f);
+            label->setPosition(
+                m_center + CCPoint{0.f, h / 2.f - 18.f}
+            );
+            m_mainLayer->addChild(label, 6);
+        }
+
+        auto closeSprite =
+            CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
+
+        if (closeSprite) {
+            auto closeButton = CCMenuItemSpriteExtra::create(
+                closeSprite,
+                this,
+                menu_selector(CTPopup::onClose)
+            );
+
+            if (closeButton) {
+                closeButton->setPosition(
+                    CCPoint{-w / 2.f + 4.f, h / 2.f - 4.f}
+                );
+                m_menu->addChild(closeButton);
+            }
+        }
 
         this->setKeypadEnabled(true);
         this->setTouchEnabled(true);
+
         return true;
     }
 
-    // Call after all children (menus, text inputs) exist.
     void finishBase() {
-        m_menu->setTouchPriority(-504);
+        if (m_menu) {
+            m_menu->setTouchPriority(-504);
+        }
         fixPriority(this);
     }
-    template <class N> static void fixPriority(N* n) {
-        if constexpr (requires { handleTouchPriority(n); }) handleTouchPriority(n);
+
+    template <class N>
+    static void fixPriority(N* node) {
+        if constexpr (requires { handleTouchPriority(node); }) {
+            handleTouchPriority(node);
+        }
     }
 
-    CCMenuItemSpriteExtra* addBtn(char const* text, CCPoint pos, SEL_MenuHandler sel, float scale = .55f, int tag = 0) {
-        auto spr = ButtonSprite::create(text);
-        spr->setScale(scale);
-        auto b = CCMenuItemSpriteExtra::create(spr, this, sel);
-        b->setPosition(pos);
-        b->setTag(tag);
-        m_menu->addChild(b);
-        return b;
+    CCMenuItemSpriteExtra* addBtn(
+        char const* text,
+        CCPoint pos,
+        SEL_MenuHandler callback,
+        float scale = 0.6f,
+        int tag = 0
+    ) {
+        if (!m_menu || !text || !callback) {
+            return nullptr;
+        }
+
+        auto label = CCLabelBMFont::create(
+            text,
+            "bigFont.fnt"
+        );
+
+        if (!label) {
+            return nullptr;
+        }
+
+        label->setScale(scale);
+
+        auto button = CCMenuItemSpriteExtra::create(
+            label,
+            this,
+            callback
+        );
+
+        if (!button) {
+            return nullptr;
+        }
+
+        button->setTag(tag);
+        button->setPosition(pos);
+        m_menu->addChild(button);
+
+        return button;
     }
 
-    CCLabelBMFont* addLabel(std::string const& text, CCPoint pos, float scale = .5f,
-                            char const* font = "chatFont.fnt", CCPoint anchor = {.5f, .5f}) {
-        auto l = CCLabelBMFont::create(text.empty() ? " " : text.c_str(), font);
-        l->setScale(scale);
-        l->setAnchorPoint(anchor);
-        l->setPosition(m_center + pos);
-        m_mainLayer->addChild(l, 6);
-        return l;
+    CCLabelBMFont* addLabel(
+        char const* text,
+        CCPoint pos,
+        float scale = 0.5f
+    ) {
+        if (!m_body) {
+            return nullptr;
+        }
+
+        auto label = CCLabelBMFont::create(
+            text ? text : "",
+            "bigFont.fnt"
+        );
+
+        if (!label) {
+            return nullptr;
+        }
+
+        label->setScale(scale);
+        label->setPosition(pos);
+        m_body->addChild(label);
+
+        return label;
     }
 
-    // Replace the text block in m_body (one chatFont label per line).
-    void setLines(std::vector<std::string> const& lines, CCPoint topLeft, float lineH = 10.5f, float scale = .45f) {
-        m_body->removeAllChildren();
-        float y = topLeft.y;
-        for (auto const& s : lines) {
-            auto l = CCLabelBMFont::create(s.empty() ? " " : s.c_str(), "chatFont.fnt");
-            l->setAnchorPoint({0, .5f});
-            l->setScale(scale);
-            l->setPosition(m_center + CCPoint{topLeft.x, y});
-            m_body->addChild(l);
-            y -= lineH;
+    void setLines(
+        std::vector<std::string> const& lines,
+        CCPoint start,
+        float lineHeight = 12.f,
+        float scale = 0.45f
+    ) {
+        if (!m_body) {
+            return;
+        }
+
+        m_body->removeAllChildrenWithCleanup(true);
+
+        float y = start.y;
+
+        for (auto const& line : lines) {
+            auto label = CCLabelBMFont::create(
+                line.c_str(),
+                "bigFont.fnt"
+            );
+
+            if (!label) {
+                y -= lineHeight;
+                continue;
+            }
+
+            label->setAnchorPoint(CCPoint{0.f, 0.5f});
+            label->setPosition(CCPoint{start.x, y});
+            label->setScale(scale);
+            m_body->addChild(label);
+
+            y -= lineHeight;
         }
     }
 
@@ -101,7 +224,11 @@ public:
         this->setKeypadEnabled(false);
         this->removeFromParentAndCleanup(true);
     }
-    void keyBackClicked() override { this->onClose(nullptr); }
+
+    void keyBackClicked() override {
+        this->onClose(nullptr);
+    }
 };
 
 } // namespace ct
+
