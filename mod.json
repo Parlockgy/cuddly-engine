@@ -1,0 +1,43 @@
+{
+  "geode": "5.11.2",
+  "gd": {
+    "android": "2.2081"
+  },
+  "id": "pumpkinman.fps-optimizer-pro",
+  "name": "FPS Optimizer Pro",
+  "version": "v1.0.0",
+  "developer": "Pumpkinman",
+  "description": "Live FPS counter and lightweight particle rendering mode.",
+  "tags": [
+    "performance",
+    "utility",
+    "gameplay"
+  ],
+  "settings": {
+    "show-fps": {
+      "name": "Show FPS Counter",
+      "description": "Shows a live FPS counter at the upper-left during gameplay.",
+      "type": "bool",
+      "default": true
+    },
+    "reduce-particles": {
+      "name": "Performance Mode: Reduce Particles",
+      "description": "Hides particle systems during gameplay to reduce visual rendering load. This may remove some visual effects.",
+      "type": "bool",
+      "default": false
+    },
+    "fps-update-interval": {
+      "name": "Counter Update Interval",
+      "description": "How often the displayed FPS value refreshes.",
+      "type": "float",
+      "default": 0.25,
+      "min": 0.1,
+      "max": 1.0,
+      "control": {
+        "slider": true,
+        "slider-step": 0.05,
+        "input": true
+      }
+    }
+  }
+}
