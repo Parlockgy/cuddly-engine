@@ -1,19 +1,14 @@
-# FPS Optimizer Pro — Geode Android project
+# LevelTune Importer — Geode Android starter
 
-A Geode C++ project targeting Geometry Dash 2.2 Android 64-bit.
-
-## Features
-- Live FPS counter in the upper-left during gameplay.
-- Green/yellow/red status colors based on measured FPS.
-- Configurable counter refresh interval.
-- Optional particle-visual reduction mode.
-- Long decorated `about.md` description.
+This is an editor-button prototype, not a finished downloader.
 
 ## Build
-1. Upload the contents of this folder to a GitHub repository.
-2. Open **Actions** and run **Build FPS Optimizer Pro for Android**.
-3. Download the `FPS-Optimizer-Pro-Android64` artifact.
-4. Install the generated `.geode` file using Geode.
+Upload the folder contents to GitHub and run Actions -> Build LevelTune Importer. Download the Android64 artifact.
 
-## Important
-This source project has not been compiled against your exact local Geode SDK or tested in-game yet. The particle option hides particle nodes to reduce visual rendering; it cannot guarantee an FPS increase on every level/device. Test on a copy of your setup and send any compiler log if the workflow fails.
+## Current status
+- Adds a LevelTune button to the editor if the expected editor menu ID exists.
+- Shows an information popup.
+- Does not yet download/import music.
+- Does not extract audio from YouTube watch URLs.
+
+Next implementation work: robust editor-button placement, URL input UI, direct audio downloads with Android-safe networking, format/size validation, and registering/placing the downloaded song using supported Geometry Dash/Geode APIs. Test against the exact Geode SDK and GD version.
