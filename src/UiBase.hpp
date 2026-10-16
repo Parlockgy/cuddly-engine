@@ -26,7 +26,6 @@ protected:
 
         auto win = CCDirector::sharedDirector()->getWinSize();
 
-        // Explicit CCPoint avoids ambiguous CCPoint/CCSize assignment.
         m_center = CCPoint{
             win.width / 2.f,
             win.height / 2.f
@@ -37,6 +36,7 @@ protected:
             if (!m_mainLayer) {
                 return false;
             }
+
             this->addChild(m_mainLayer);
         }
 
@@ -54,6 +54,7 @@ protected:
         m_mainLayer->addChild(bg, -1);
 
         m_body = CCNode::create();
+
         if (!m_body) {
             return false;
         }
@@ -62,6 +63,7 @@ protected:
         m_mainLayer->addChild(m_body, 5);
 
         m_menu = CCMenu::create();
+
         if (!m_menu) {
             return false;
         }
@@ -97,6 +99,7 @@ protected:
                 closeButton->setPosition(
                     CCPoint{-w / 2.f + 4.f, h / 2.f - 4.f}
                 );
+
                 m_menu->addChild(closeButton);
             }
         }
@@ -111,6 +114,7 @@ protected:
         if (m_menu) {
             m_menu->setTouchPriority(-504);
         }
+
         fixPriority(this);
     }
 
@@ -160,10 +164,12 @@ protected:
         return button;
     }
 
+    // Supports an optional fourth argument for the font filename.
     CCLabelBMFont* addLabel(
         char const* text,
         CCPoint pos,
-        float scale = 0.5f
+        float scale = 0.5f,
+        char const* font = "bigFont.fnt"
     ) {
         if (!m_body) {
             return nullptr;
@@ -171,7 +177,7 @@ protected:
 
         auto label = CCLabelBMFont::create(
             text ? text : "",
-            "bigFont.fnt"
+            font ? font : "bigFont.fnt"
         );
 
         if (!label) {
@@ -231,4 +237,3 @@ public:
 };
 
 } // namespace ct
-
