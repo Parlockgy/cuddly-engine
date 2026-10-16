@@ -1,12 +1,20 @@
 {
   "geode": "5.11.2",
-  "gd": { "android": "2.2081" },
+  "gd": {
+    "android": "2.2081"
+  },
   "id": "pumpkinman.creator-toolkit",
   "name": "Creator Toolkit",
-  "version": "v1.0.0",
+  "version": "v1.0.1",
   "developer": "Pumpkinman",
-  "description": "An editor toolbox prototype for level creators: object optimization, palette sync, and expanded color-slot workflow.",
-  "tags": ["editor", "utility", "performance", "enhancement", "customization"],
+  "description": "An editor toolbox prototype with a paginated information panel for object optimization, palette sync, and expanded color-slot workflow.",
+  "tags": [
+    "editor",
+    "utility",
+    "performance",
+    "enhancement",
+    "customization"
+  ],
   "settings": {
     "show-editor-button": {
       "name": "Show editor toolbox button",

@@ -13,3 +13,7 @@ This is **not yet a fully functional optimizer**. It does not merge objects, rew
 
 ## Build
 Push the project to GitHub and run **Actions → Build Creator Toolkit**. The workflow targets Android64. Build output has not been compiled or tested in-game in this environment.
+
+
+## Atualização 1.0.1
+O painel de informações agora está dividido em 3 páginas menores. Ao tocar em **OK**, a próxima página é aberta, evitando que o texto ultrapasse a janela. Esta atualização ainda é apenas o painel informativo; as ferramentas de otimização e paleta continuam sendo funcionalidades planejadas, não implementadas.
