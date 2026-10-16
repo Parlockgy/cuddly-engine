@@ -1,19 +1,8 @@
-# Creator Toolkit (Geode / Android64)
+# Creator Toolkit v1.3.0 (Geode, Android 2.2081)
 
-Editor-side prototype for a level-creator toolbox.
+**Status: written, not compiled, not tested in-game.** Build with the GitHub Actions workflow and fix errors from the log. See `docs/API_STATUS.md`.
 
-## Included in this starter build
-- An entry button is injected into `EditorUI` when the `editor-buttons-menu` node exists.
-- The popup describes the planned Object Optimizer, Palette Sync, and 50+ palette preset pages.
-- Settings allow disabling the editor button and indicate preview/confirmation preferences.
-- The code explicitly reports that no level data is modified by this prototype.
-
-## Important status note
-This is **not yet a fully functional optimizer**. It does not merge objects, rewrite trigger chains, alter color channels, or create more native Geometry Dash color channels. A safe implementation must inspect the actual selected-object data, preserve object properties and group/channel references, and be tested on copied levels before changing saved data. The 50+ slots are intended as mod-managed palette presets, not a claim that Geometry Dash's native channel limit has been expanded.
-
-## Build
-Push the project to GitHub and run **Actions → Build Creator Toolkit**. The workflow targets Android64. Build output has not been compiled or tested in-game in this environment.
-
-
-## Atualização 1.0.1
-O painel de informações agora está dividido em 3 páginas menores. Ao tocar em **OK**, a próxima página é aberta, evitando que o texto ultrapasse a janela. Esta atualização ainda é apenas o painel informativo; as ferramentas de otimização e paleta continuam sendo funcionalidades planejadas, não implementadas.
+- **Palette Lab**: 6 harmony modes, 10 presets, hue/sat/brightness/contrast, 6 roles (primary, secondary, background, highlight, light, dark), RGB+HEX, regenerate + history, custom palettes (persisted), HEX swatch editor. Apply: *Paint Channel* sets an existing channel's color; *Assign + Paint* also points selected objects' primary/secondary channel to it. *Undo Apply* restores.
+- **Optimizer / Duplicate Cleaner**: analyze selection or level, report, preview (selects dupes), confirm, apply via the editor's own delete, verified undo. Removes only byte-identical duplicates of Solid/Hazard/Decoration objects and Color/Alpha/Toggle triggers. Never fuses objects; makes no FPS claims.
+- **Object Inspector**: per-object or aggregate selection report, copyable.
+- **Micro Grid / Grid Presets**: set editor grid step (unverified API), persisted, plus Snap Selection with revert.

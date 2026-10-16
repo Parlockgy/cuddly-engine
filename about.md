@@ -1,12 +1,39 @@
-# Creator Toolkit
+# <cp>Creator Toolkit</c>
 
-A toolbox concept for Geometry Dash level creators.
+<ca>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</c>
 
-### Planned features
-- **Object Optimizer:** analyze selected static objects, identify identical candidates, and preview possible merges before applying changes.
-- **Trigger Audit:** flag repeated or potentially redundant trigger setups without deleting anything automatically.
-- **Palette Sync:** derive coordinated highlight and shadow suggestions from a chosen base color while keeping existing channel IDs intact.
-- **Palette Pages:** mod-managed saved color presets with pages, names, and quick-apply workflows; these are presets, not extra native GD channels.
+<cy>A LEVEL EDITOR TOOLKIT FOR GEOMETRY DASH</c>
 
-### Safety
-The current build is a UI prototype only. It does not modify level data, merge objects, or rewrite color channels. Never run experimental object transformations on the only copy of a level.
+<cl>Creator Toolkit is a collection of tools designed to improve the Geometry Dash level editing experience.</c>
+
+<cp>FEATURES</c>
+
+<cg>Palette Lab</c>
+
+Generate color palettes, explore RGB and HEX values, and organize color combinations for your levels.
+
+<cb>Duplicate Cleaner</c>
+
+Identify duplicate objects, review potential changes, and safely clean up your levels with undo support.
+
+<cy>Object Inspector</c>
+
+Inspect selected objects and examine their available properties directly in the level editor.
+
+<co>Micro Grid</c>
+
+Explore precision-placement options and supported grid settings for more detailed level creation.
+
+<cp>DESIGNED FOR CREATORS</c>
+
+<cl>Creator Toolkit aims to bring useful editing utilities into one convenient interface, helping creators organize objects, experiment with colors, and refine their levels.</c>
+
+<ca>━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━</c>
+
+<cr>PRE-RELEASE NOTICE</c>
+
+<co>This mod is an untested pre-release. Features may be incomplete, unsupported, or contain bugs. Back up important levels before testing editing tools.</c>
+
+<cy>CREATOR TOOLKIT</c>
+
+<cl>Made for Geometry Dash creators.</c>

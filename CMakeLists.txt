@@ -1,7 +1,10 @@
 cmake_minimum_required(VERSION 3.21)
-project(CreatorToolkit VERSION 1.0.0)
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_STANDARD_REQUIRED ON)
+project(CreatorToolkit VERSION 1.3.0)
 
-add_library(${PROJECT_NAME} SHARED src/main.cpp)
+file(GLOB SOURCES CONFIGURE_DEPENDS src/*.cpp)
+add_library(${PROJECT_NAME} SHARED ${SOURCES})
 
 if (NOT DEFINED ENV{GEODE_SDK})
     message(FATAL_ERROR "GEODE_SDK environment variable is not set. Install/configure the Geode SDK first.")

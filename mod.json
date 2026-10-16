@@ -5,9 +5,9 @@
   },
   "id": "pumpkinman.creator-toolkit",
   "name": "Creator Toolkit",
-  "version": "v1.0.1",
+  "version": "v1.3.0",
   "developer": "Pumpkinman",
-  "description": "An editor toolbox prototype with a paginated information panel for object optimization, palette sync, and expanded color-slot workflow.",
+  "description": "Editor toolkit: Palette Lab (generate/apply palettes), duplicate cleaner with undo, object inspector, micro grid.",
   "tags": [
     "editor",
     "utility",
@@ -24,13 +24,19 @@
     },
     "confirm-optimization": {
       "name": "Confirm optimization actions",
-      "description": "Keep enabled while object-merging functionality is being developed and tested.",
+      "description": "Ask for confirmation before removing duplicates or snapping objects to the grid.",
       "type": "bool",
       "default": true
     },
     "palette-sync-preview": {
       "name": "Palette Sync preview mode",
-      "description": "Preview-only mode; does not rewrite level color channels in this prototype.",
+      "description": "Reserved (no effect in this version).",
+      "type": "bool",
+      "default": true
+    },
+    "restore-grid-on-open": {
+      "name": "Restore saved grid step",
+      "description": "Re-apply the last Micro Grid step when the editor opens.",
       "type": "bool",
       "default": true
     }
