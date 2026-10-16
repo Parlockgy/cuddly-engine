@@ -1,62 +1,97 @@
-# <cp>FPS OPTIMIZER PRO</c> <cy>— PERFORMANCE SUITE</c>
+# <cp>FPS OPTIMIZER PRO</c> <cy>2.0 — PERFORMANCE SUITE</c>
 
-<cg>**LIVE FPS MONITORING. LIGHTWEIGHT VISUALS. MORE CONTROL.**</c>
+<cg>**MEASURE MORE. REMOVE VISUAL LOAD. TAKE CONTROL.**</c>
 
-Welcome to <cj>FPS Optimizer Pro</c>, a Geometry Dash utility focused on making performance easier to understand and giving you a quick way to reduce some visual workload.
+Welcome to <cj>FPS Optimizer Pro 2.0</c>, a performance-focused toolkit for Geometry Dash. This major update expands the live performance overlay and adds a configurable low-graphics mode to reduce some visual work during gameplay.
 
-This mod combines a real-time FPS counter with an optional particle-reduction mode. It is designed for Geometry Dash 2.2 on Android and targets players who want a cleaner gameplay view and a simple way to monitor frame-rate changes.
+> <cy>IMPORTANT:</c> This mod can reduce certain visual effects, but it cannot guarantee higher FPS on every device or level. Results depend on hardware, thermal conditions, game settings, and the level itself.
 
 ---
 
-## <cy>▰ LIVE FPS COUNTER</c>
+## <cy>▰ LIVE FPS + FRAME TIME</c>
 
-See the current measured update rate directly in the **upper-left corner** while playing.
+The counter lives in the upper-left corner during gameplay and measures frame rate over elapsed time.
 
-- <cg>GREEN</c> — 50 FPS and above
+- <cg>GREEN</c> — 50 FPS or higher
 - <cy>YELLOW</c> — 30–49 FPS
 - <cr>RED</c> — below 30 FPS
 
-The displayed number refreshes at a configurable interval. The counter samples frames over real elapsed time instead of showing a fixed decorative number.
+Turn on **Show Frame Time (ms)** to display the estimated time per frame. At 60 FPS, one frame takes about 16.7 ms; at 30 FPS, about 33.3 ms.
 
-## <cp>▰ PERFORMANCE MODE: REDUCE PARTICLES</c>
+## <cp>▰ LOW GRAPHICS PRESET</c>
 
-Enable this option to hide particle-system visuals during gameplay. On levels that use many particle effects, reducing their rendering may help lower visual workload.
+One switch to hide the background, ground layers, and particle visuals. Use this when you want the simplest visual scene for performance testing.
 
-**Heads up:** this option is intentionally conservative. It hides particle visuals; it does not magically optimize every level, change the game's physics, or guarantee higher FPS. Some trails, bursts, and decorative effects may disappear while it is enabled.
+## <cj>▰ INDIVIDUAL OPTIMIZATION OPTIONS</c>
 
-## <cj>▰ MADE FOR QUICK TESTING</c>
+### <cg>1. Reduce Particles</c>
+Hides particle-system visuals, such as some bursts and decorative effects.
 
-Use the counter to compare the same section of a level with Performance Mode off and on. Results depend on your device, the level's object count, shaders, effects, and other running apps.
+### <cg>2. Hide Background</c>
+Hides the level background while keeping gameplay objects visible.
 
-For a fair comparison:
-1. Play the same section of a level.
-2. Watch the FPS counter for a few seconds.
-3. Enable Reduce Particles and replay that section.
-4. Compare the readings instead of relying on a single frame.
+### <cg>3. Hide Ground</c>
+Hides the main ground layer.
 
-## <co>▰ SETTINGS</c>
+### <cg>4. Hide Second Ground Layer</c>
+Hides the secondary ground layer, which some levels use for extra ground decoration.
 
-### <cg>Show FPS Counter</c>
-Turns the upper-left counter on or off.
+### <cg>5. Low Graphics Preset</c>
+Combines background, ground, secondary ground, and particle reduction.
 
-### <cy>Performance Mode: Reduce Particles</c>
-Hides particle systems during gameplay to reduce their visual rendering cost. This may change the intended appearance of a level.
+### <cg>6. Reduce Particles in Practice Mode</c>
+Controls whether particle reduction applies while playing in Practice Mode.
 
-### <cp>Counter Update Interval</c>
-Controls how often the shown FPS value refreshes. A shorter interval reacts faster; a longer interval produces a steadier reading.
+### <cg>7. Show FPS Counter</c>
+Toggles the live counter on or off.
+
+### <cg>8. Show Frame Time</c>
+Adds the estimated milliseconds per frame beside the FPS number.
+
+### <cg>9. Adaptive FPS Colors</c>
+Colors the counter green, yellow, or red according to measured performance.
+
+### <cg>10. Performance Status</c>
+Optionally displays GOOD, FAIR, or LOW next to the counter.
+
+### <cg>11. Counter Size</c>
+Adjusts the counter scale for different screens and readability preferences.
+
+### <cg>12. Counter Update Interval</c>
+Controls how often the number refreshes. Faster refreshes react sooner; slower refreshes can look steadier.
+
+### <cg>13. Green FPS Threshold</c>
+Choose the FPS value where the counter changes to green.
+
+### <cg>14. Yellow FPS Threshold</c>
+Choose the lower threshold where the counter changes from red to yellow.
 
 ---
 
-## <cr>IMPORTANT NOTES</c>
+## <cr>▰ ABOUT ANTI-ALIASING</c>
 
-- FPS depends on hardware, thermal throttling, the game version, the level, and other mods.
-- A counter measures performance; it cannot create extra hardware power.
-- Hiding particle visuals may help in some situations but may have little effect in others.
-- If a visual effect disappears unexpectedly, turn off Reduce Particles and restart the level.
-- This is an early release. Compatibility and performance behavior must be tested on the target Geometry Dash and Geode versions.
+Anti-aliasing smooths jagged edges, but it is not a universal FPS boost. Higher anti-aliasing quality usually requires more GPU work, and changing it at runtime depends on how the game renderer and device were initialized.
 
-## <cg>THANK YOU FOR USING FPS OPTIMIZER PRO</c>
+**FPS Optimizer Pro does not claim to toggle engine-level anti-aliasing in this version.** A normal Geode mod cannot reliably turn on MSAA after the graphics context has already been created on every Android device. If the device or game build exposes a supported graphics option, use that option; otherwise an AA toggle in this mod would be misleading.
 
-Built for players who want to measure first, optimize carefully, and keep their gameplay readable.
+## <cy>▰ HOW TO TEST</c>
 
-<cp>FPS OPTIMIZER PRO</c> <cy>•</c> <cg>MEASURE</c> <cy>•</c> <cj>OPTIMIZE</c> <cy>•</c> <co>PLAY</c>
+1. Play the same section with all optimization options off.
+2. Watch FPS and frame time for several seconds.
+3. Enable Low Graphics Preset and replay the same section.
+4. Compare the readings under similar conditions.
+5. If the level looks wrong, disable individual options to identify which layer or effect changed.
+
+## <cr>▰ COMPATIBILITY & SAFETY</c>
+
+- This update targets Geometry Dash 2.2 on Android through Geode.
+- Hiding background or ground layers changes the intended appearance of levels.
+- Particle reduction may hide visual effects that creators intended players to see.
+- FPS measurements can fluctuate; do not judge performance from a single frame.
+- This project must be compiled and tested against the target Geode SDK before release.
+
+## <cg>FPS OPTIMIZER PRO 2.0</c>
+
+<cp>MEASURE</c> <cy>•</c> <cg>OPTIMIZE</c> <cy>•</c> <cj>PLAY</c>
+
+Thanks for testing the update and helping make the mod better.
